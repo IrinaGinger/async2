@@ -2,17 +2,9 @@ import read from '../modules/reader';
 import json from '../modules/parser';
 
 export default class GameSavingLoader {
-  static load() {
-    read()
-      .then(response => {
-        return json(response);
-      })
-        .then(value => {
-          return new Promise(resolve => {
-            setTimeout(() => {
-              resolve(JSON.parse(value));
-            }, 0);
-          });
-        });
+  static async load() {
+    const response1 = await read();
+    const response2 = await json(response1);
+    return JSON.parse(response2);
   }
 }
