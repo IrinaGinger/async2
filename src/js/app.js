@@ -1,8 +1,9 @@
-import GameSavingLoader from './classes/gamesavingloader'
+import GameSavingLoader from './classes/gamesaving'
 
 export default async function savingLoader() {
   try {
-    return await GameSavingLoader.load();
+    const saving = await GameSavingLoader.load();
+    return saving;
   }
   catch(e) {
     return e;
